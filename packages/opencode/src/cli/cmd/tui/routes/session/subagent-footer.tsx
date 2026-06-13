@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import { createMemo, createSignal, Show } from "solid-js"
 import { useRouteData, useCurrentAgentID } from "@tui/context/route"
 import { useSync } from "@tui/context/sync"

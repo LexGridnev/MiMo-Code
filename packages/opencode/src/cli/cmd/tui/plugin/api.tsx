@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import type { ParsedKey } from "@opentui/core"
 import type { TuiDialogSelectOption, TuiPluginApi, TuiRouteDefinition, TuiSlotProps } from "@mimo-ai/plugin/tui"
 import type { useCommandDialog } from "@tui/component/dialog-command"

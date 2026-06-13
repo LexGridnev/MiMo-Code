@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import { useDialog } from "@tui/ui/dialog"
 import { DialogConfirm } from "@tui/ui/dialog-confirm"
 import { DialogSelect, type DialogSelectOption } from "@tui/ui/dialog-select"

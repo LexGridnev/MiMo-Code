@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import type { TuiPlugin, TuiPluginApi, TuiPluginModule } from "@mimo-ai/plugin/tui"
 import { createMemo, For, Match, Show, Switch, createSignal } from "solid-js"
 

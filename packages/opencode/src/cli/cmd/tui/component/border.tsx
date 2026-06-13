@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 export const EmptyBorder = {
   topLeft: "",
   bottomLeft: "",

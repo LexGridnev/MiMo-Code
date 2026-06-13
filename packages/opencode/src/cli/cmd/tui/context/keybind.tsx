@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import { createMemo } from "solid-js"
 import { Keybind } from "@/util"
 import { pipe, mapValues } from "remeda"

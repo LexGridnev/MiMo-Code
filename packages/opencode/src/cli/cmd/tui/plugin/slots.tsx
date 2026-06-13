@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import type { TuiPluginApi, TuiSlotContext, TuiSlotMap, TuiSlotProps } from "@mimo-ai/plugin/tui"
 import { createSlot, createSolidSlotRegistry, type JSX, type SolidPlugin } from "@opentui/solid"
 import { isRecord } from "@/util/record"

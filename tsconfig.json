@@ -1,5 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@tsconfig/bun/tsconfig.json",
-  "compilerOptions": {}
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "@opentui/solid",
+    "paths": {
+      "@/*": ["./packages/opencode/src/*"],
+      "@tui/*": ["./packages/opencode/src/cli/cmd/tui/*"],
+      "@test/*": ["./packages/opencode/test/*"]
+    }
+  }
 }

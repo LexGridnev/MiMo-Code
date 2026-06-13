@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import { DialogSelect, type DialogSelectOption } from "../ui/dialog-select"
 import { useDialog } from "../ui/dialog"
 import { useKV } from "../context/kv"

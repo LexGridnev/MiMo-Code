@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import { createOpencodeClient } from "@mimo-ai/sdk/v2"
 import { useDialog } from "@tui/ui/dialog"
 import { DialogSelect } from "@tui/ui/dialog-select"

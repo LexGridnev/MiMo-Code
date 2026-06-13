@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import { DialogPrompt } from "@tui/ui/dialog-prompt"
 import { useDialog } from "@tui/ui/dialog"
 import { useSync } from "@tui/context/sync"

@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import { createSignal, onMount, Show } from "solid-js"
 import { useSDK } from "../context/sdk"
 import { useSync } from "@tui/context/sync"

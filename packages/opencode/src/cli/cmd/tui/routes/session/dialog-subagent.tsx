@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import { DialogSelect } from "@tui/ui/dialog-select"
 import { useRoute } from "@tui/context/route"
 import { useSync } from "@tui/context/sync"

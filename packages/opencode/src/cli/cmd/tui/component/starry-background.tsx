@@ -1,3 +1,4 @@
+/** @jsxImportSource @opentui/solid */
 import { createEffect, createSignal, onCleanup, onMount, createMemo } from "solid-js"
 import { RGBA, StyledText, type BoxRenderable, type TextChunk, type TextRenderable } from "@opentui/core"
 import { useTheme, tint } from "@tui/context/theme"
