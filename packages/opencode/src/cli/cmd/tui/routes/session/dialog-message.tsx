@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { createMemo } from "solid-js"
 import { useSync } from "@tui/context/sync"
 import { DialogSelect } from "@tui/ui/dialog-select"

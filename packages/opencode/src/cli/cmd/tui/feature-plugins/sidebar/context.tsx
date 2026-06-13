@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import type { AssistantMessage } from "@mimo-ai/sdk/v2"
 import type { TuiPlugin, TuiPluginApi, TuiPluginModule } from "@mimo-ai/plugin/tui"
 import { Show, createEffect, createMemo, createSignal, onCleanup } from "solid-js"

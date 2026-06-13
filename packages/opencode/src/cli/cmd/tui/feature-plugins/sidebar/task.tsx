@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import type { TuiPlugin, TuiPluginApi, TuiPluginModule } from "@mimo-ai/plugin/tui"
 import { createMemo, Index, Show, createSignal } from "solid-js"
 import { TaskItem } from "../../component/task-item"

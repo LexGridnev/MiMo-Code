@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { createMemo, createSignal, For, onCleanup } from "solid-js"
 import { DEFAULT_THEMES, useTheme } from "@tui/context/theme"
 import { useLanguage } from "@tui/context/language"

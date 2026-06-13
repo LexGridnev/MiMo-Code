@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { expect, test } from "bun:test"
 import { createSlot, createSolidSlotRegistry, testRender, useRenderer } from "@opentui/solid"
 import { onMount } from "solid-js"

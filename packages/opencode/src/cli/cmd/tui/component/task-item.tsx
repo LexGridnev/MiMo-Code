@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { Show } from "solid-js"
 import { useTheme } from "../context/theme"
 import { useKV } from "../context/kv"

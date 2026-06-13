@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { TuiConfig } from "@/cli/cmd/tui/config/tui"
 import { createSimpleContext } from "./helper"
 

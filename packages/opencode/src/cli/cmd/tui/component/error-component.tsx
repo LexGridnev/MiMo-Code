@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { TextAttributes } from "@opentui/core"
 import { useKeyboard, useRenderer, useTerminalDimensions } from "@opentui/solid"
 import * as Clipboard from "@tui/util/clipboard"

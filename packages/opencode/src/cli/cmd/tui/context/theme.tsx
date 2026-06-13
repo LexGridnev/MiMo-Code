@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { CliRenderEvents, SyntaxStyle, RGBA, type TerminalColors } from "@opentui/core"
 import path from "path"
 import { createEffect, createMemo, onCleanup, onMount } from "solid-js"

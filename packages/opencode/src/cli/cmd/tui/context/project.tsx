@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { batch } from "solid-js"
 import type { Path, Workspace } from "@mimo-ai/sdk/v2"
 import { createStore, reconcile } from "solid-js/store"

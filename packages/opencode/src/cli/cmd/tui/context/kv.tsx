@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { Global } from "@/global"
 import { Filesystem } from "@/util"
 import { Flock } from "@mimo-ai/shared/util/flock"

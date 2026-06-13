@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { Prompt, type PromptRef } from "@tui/component/prompt"
 import { createEffect, createMemo, createSignal, Show } from "solid-js"
 import path from "path"

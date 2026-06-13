@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { createStore, reconcile } from "solid-js/store"
 import { createMemo, type Accessor } from "solid-js"
 import { createSimpleContext } from "./helper"
