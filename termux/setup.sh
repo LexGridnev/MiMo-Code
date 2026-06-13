@@ -125,7 +125,7 @@ if [ "\${1:-}" = "upgrade" ]; then
   exit 0
 fi
 
-exec bun run --preload="@opentui/solid/preload" --conditions=browser "\$REPO_DIR/\$ENTRY" "\$@"
+exec $PREFIX/bin/bun run --preload="@opentui/solid/preload" --conditions=browser "\$REPO_DIR/\$ENTRY" "\$@"
 WRAP
 chmod +x "$BIN"
 
