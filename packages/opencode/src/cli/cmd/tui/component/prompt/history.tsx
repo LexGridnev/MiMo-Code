@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import path from "path"
 import { Global } from "@/global"
 import { Filesystem } from "@/util"

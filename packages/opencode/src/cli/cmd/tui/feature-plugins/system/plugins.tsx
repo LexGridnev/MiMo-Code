@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { Keybind } from "@/util"
 import type { TuiPlugin, TuiPluginApi, TuiPluginModule, TuiPluginStatus } from "@mimo-ai/plugin/tui"
 import { useKeyboard, useTerminalDimensions } from "@opentui/solid"

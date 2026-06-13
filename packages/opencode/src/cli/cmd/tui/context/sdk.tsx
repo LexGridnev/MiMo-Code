@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { createOpencodeClient } from "@mimo-ai/sdk/v2"
 import type { GlobalEvent } from "@mimo-ai/sdk/v2"
 import { createSimpleContext } from "./helper"

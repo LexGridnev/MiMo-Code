@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { createStore } from "solid-js/store"
 import { createSimpleContext } from "./helper"
 import { batch, createEffect, createMemo, createSignal } from "solid-js"

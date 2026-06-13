@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { createEffect, createMemo, createResource, onCleanup, Show } from "solid-js"
 import { useTerminalDimensions } from "@opentui/solid"
 import { RGBA, StyledText, type TextChunk, type TextRenderable } from "@opentui/core"

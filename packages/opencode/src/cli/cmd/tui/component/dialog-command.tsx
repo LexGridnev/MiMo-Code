@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { useDialog } from "@tui/ui/dialog"
 import { DialogSelect, type DialogSelectOption, type DialogSelectRef } from "@tui/ui/dialog-select"
 import { isEditBufferRenderable } from "@opentui/core"

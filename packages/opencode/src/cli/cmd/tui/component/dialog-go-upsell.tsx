@@ -1,4 +1,3 @@
-/** @jsxImportSource @opentui/solid */
 import { BoxRenderable, RGBA, TextAttributes } from "@opentui/core"
 import { useKeyboard } from "@opentui/solid"
 import open from "open"
