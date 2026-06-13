@@ -106,6 +106,7 @@ build_deps
 # --- launcher: 'mimo' + 'mimo upgrade' --------------------------------------
 BIN="$PREFIX/bin/mimo"
 say "Installing launcher -> $BIN"
+rm -f "$BIN"
 cat > "$BIN" << WRAP
 #!/data/data/com.termux/files/usr/bin/env bash
 set -euo pipefail
