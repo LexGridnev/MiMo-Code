@@ -24,6 +24,8 @@ MiMo Auto is built in as a free-for-limited-time channel, so you can start with 
 
 ## Quick Start
 
+### Standard Installation
+
 ```bash
 # One-line install
 curl -fsSL https://mimo.xiaomi.com/install | bash
@@ -31,6 +33,24 @@ curl -fsSL https://mimo.xiaomi.com/install | bash
 # Or install via npm
 npm install -g @mimo-ai/cli
 ```
+
+### Termux / Android (aarch64)
+
+Since upstream release binaries are glibc-linked and cannot run natively on Android's Bionic libc, you can run MiMoCode from source under Bun using the Termux auto-installer:
+
+```bash
+# One-line install for Termux (Android)
+curl -fsSL https://raw.githubusercontent.com/LexGridnev/MiMo-Code/HEAD/termux/setup.sh | bash
+```
+
+The installer script automatically:
+1. Updates system packages and installs build tools (`git`, `python`, `clang`, `make`, `binutils`, `libandroid-spawn`, `ca-certificates`).
+2. Installs Bun (via Termux packages or the official installer).
+3. Clones the repository and installs dependencies with copyfile backend.
+4. Rebuilds `node-pty` from source to ensure full compatibility with Android's Bionic libc.
+5. Installs a global `mimo` wrapper in your PATH.
+
+Once installed, simply run `mimo` to start. You can update the installation later by running `mimo upgrade`.
 
 The first launch guides you through configuration automatically. Supported options:
 - **MiMo Auto (free for a limited time)** — anonymous channel, zero configuration
