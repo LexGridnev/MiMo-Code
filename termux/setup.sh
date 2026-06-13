@@ -119,8 +119,8 @@ if [ "\${1:-}" = "upgrade" ]; then
   echo "==> Updating MiMo-Code..."
   git -C "\$REPO_DIR" pull --ff-only
   export LDFLAGS="-landroid-spawn \${LDFLAGS:-}"
-  ( cd "\$REPO_DIR" && bun install --ignore-scripts --backend=copyfile \
-    && bun run --cwd packages/opencode fix-node-pty >/dev/null 2>&1 || true )
+  ( cd "\$REPO_DIR" && $PREFIX/bin/bun install --ignore-scripts --backend=copyfile \
+    && $PREFIX/bin/bun run --cwd packages/opencode fix-node-pty >/dev/null 2>&1 || true )
   echo "==> Up to date."
   exit 0
 fi
