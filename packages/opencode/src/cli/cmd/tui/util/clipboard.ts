@@ -91,6 +91,13 @@ export async function read(): Promise<Content | undefined> {
   }
 
   if (os === "linux") {
+    const which = await getWhich()
+    if (which("termux-clipboard-get")) {
+      const termuxRes = await Process.run(["termux-clipboard-get"], { nothrow: true })
+      if (termuxRes.stdout.byteLength > 0) {
+        return { data: Buffer.from(termuxRes.stdout).toString("utf8"), mime: "text/plain" }
+      }
+    }
     const wayland = await Process.run(["wl-paste", "-t", "image/png"], { nothrow: true })
     if (wayland.stdout.byteLength > 0) {
       return { data: Buffer.from(wayland.stdout).toString("base64"), mime: "image/png" }
@@ -123,6 +130,20 @@ const getCopyMethod = lazy(async () => {
   }
 
   if (os === "linux") {
+    if (which("termux-clipboard-set")) {
+      console.log("clipboard: using termux-clipboard-set")
+      return async (text: string) => {
+        const proc = Process.spawn(["termux-clipboard-set"], {
+          stdin: "pipe",
+          stdout: "ignore",
+          stderr: "ignore",
+        })
+        if (!proc.stdin) return
+        proc.stdin.write(text)
+        proc.stdin.end()
+        await proc.exited.catch(() => {})
+      }
+    }
     if (process.env["WAYLAND_DISPLAY"] && which("wl-copy")) {
       console.log("clipboard: using wl-copy")
       return async (text: string) => {

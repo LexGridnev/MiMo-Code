@@ -181,6 +181,7 @@ export function Session() {
   const [showGenericToolOutput, setShowGenericToolOutput] = kv.signal("generic_tool_output_visibility", false)
 
   const wide = createMemo(() => dimensions().width > 120)
+  const narrow = createMemo(() => dimensions().width < 90)
   const sidebarVisible = createMemo(() => {
     if (session()?.parentID) return false
     if (currentAgentID() !== "main") return false
@@ -1062,7 +1063,7 @@ export function Session() {
       }}
     >
       <box flexDirection="row">
-        <box flexGrow={1} paddingBottom={1} paddingLeft={2} paddingRight={2} gap={1} onMouse={onWheel}>
+        <box flexGrow={1} paddingBottom={1} paddingLeft={narrow() ? 0 : 2} paddingRight={narrow() ? 0 : 2} gap={1} onMouse={onWheel}>
           <Show when={session()}>
             <scrollbox
               ref={(r) => (scroll = r)}

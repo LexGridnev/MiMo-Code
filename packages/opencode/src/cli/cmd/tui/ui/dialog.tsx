@@ -21,8 +21,11 @@ export function Dialog(
   const toast = useToast()
   const t = useLanguage().t
 
+  const isNarrow = () => dimensions().width < 90
+
   let dismiss = false
   const width = () => {
+    if (isNarrow()) return dimensions().width
     if (props.size === "xlarge") return 116
     if (props.size === "large") return 88
     return 60
@@ -45,10 +48,10 @@ export function Dialog(
       alignItems="center"
       position="absolute"
       zIndex={3000}
-      paddingTop={dimensions().height / 4}
+      paddingTop={isNarrow() ? 0 : Math.floor(dimensions().height / 4)}
       left={0}
       top={0}
-      backgroundColor={RGBA.fromInts(0, 0, 0, 150)}
+      backgroundColor={isNarrow() ? theme.backgroundPanel : RGBA.fromInts(0, 0, 0, 150)}
     >
       <box
         onMouseUp={(e) => {
@@ -64,7 +67,8 @@ export function Dialog(
           e.stopPropagation()
         }}
         width={width()}
-        maxWidth={dimensions().width - 2}
+        maxWidth={isNarrow() ? dimensions().width : dimensions().width - 2}
+        height={isNarrow() ? dimensions().height : undefined}
         backgroundColor={theme.backgroundPanel}
         paddingTop={1}
       >

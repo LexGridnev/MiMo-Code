@@ -73,7 +73,12 @@ import type { EventSource } from "./context/sdk"
 import { DialogVariant } from "./component/dialog-variant"
 
 function rendererConfig(_config: TuiConfig.Info, plainTerminal: boolean): CliRendererConfig {
-  const mouseEnabled = !plainTerminal && !Flag.MIMOCODE_DISABLE_MOUSE && (_config.mouse ?? true)
+  const isTermux =
+    !!process.env.TERMUX_VERSION ||
+    !!process.env.TERMUX_APP_PID ||
+    (process.env.PREFIX ? process.env.PREFIX.includes("com.termux") : false)
+  const defaultMouse = isTermux ? false : true
+  const mouseEnabled = !plainTerminal && !Flag.MIMOCODE_DISABLE_MOUSE && (_config.mouse ?? defaultMouse)
 
   return {
     externalOutputMode: "passthrough",

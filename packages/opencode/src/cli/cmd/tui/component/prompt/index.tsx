@@ -22,7 +22,7 @@ import { DialogStash } from "../dialog-stash"
 import { type AutocompleteRef, Autocomplete } from "./autocomplete"
 import { useCommandDialog } from "../dialog-command"
 import { useLanguage } from "@tui/context/language"
-import { useRenderer, type JSX } from "@opentui/solid"
+import { useRenderer, useTerminalDimensions, type JSX } from "@opentui/solid"
 import * as Editor from "@tui/util/editor"
 import * as Voice from "@tui/util/voice"
 import { useExit } from "../../context/exit"
@@ -121,6 +121,8 @@ export function Prompt(props: PromptProps) {
   const command = useCommandDialog()
   const t = useLanguage().t
   const renderer = useRenderer()
+  const dimensions = useTerminalDimensions()
+  const narrow = () => dimensions().width < 90
   const { theme, syntax } = useTheme()
   const kv = useKV()
   const animationsEnabled = createMemo(() => kv.get("animations_enabled", true))
@@ -1406,8 +1408,8 @@ export function Prompt(props: PromptProps) {
           }}
         >
           <box
-            paddingLeft={2}
-            paddingRight={2}
+            paddingLeft={narrow() ? 0 : 2}
+            paddingRight={narrow() ? 0 : 2}
             paddingTop={1}
             flexShrink={0}
             backgroundColor={theme.backgroundElement}
