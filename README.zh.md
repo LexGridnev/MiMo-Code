@@ -1,10 +1,10 @@
-<h1 align="center">MiMoCode</h1>
+<h1 align="center">MiMoCode (Android & Termux 分支)</h1>
 
 <p align="center">
   <img src="assets/readme/mimocode-banner.png" alt="MiMoCode" width="700">
 </p>
 
-<p align="center"><strong>开源 AI 编程智能体，拥有跨会话记忆。</strong></p>
+<p align="center"><strong>开源 AI 编程智能体，拥有跨会话记忆，专为 Android & Termux 优化。</strong></p>
 
 <p align="center">
   中文 | <a href="README.md">English</a>
@@ -16,15 +16,45 @@
 
 ---
 
-MiMoCode 是一个终端原生的 AI 编程助手。它能读写代码、执行命令、管理 Git，通过持久化记忆系统，在多次会话间保持对你项目的深度理解，并自我进化。
+这是 **MiMoCode**（一个基于 [OpenCode](https://github.com/anomalyco/opencode) 构建的终端原生 AI 编程助手）的一个专属分支，专门针对 **Android (aarch64)** 平台上的 **Termux** 环境进行了全面原生适配和优化。
 
-内置 MiMo Auto 限时免费通道——零配置即可开始使用。也支持接入各家主流 LLM 厂商 API。
+### 为什么选择这个分支？
+上游发布的官方二进制文件是基于 glibc 链接的，无法在 Android 的 Bionic libc 上原生运行。本分支解决了这一限制，通过配置、修补和优化，使 MiMoCode 能够在移动设备的 Bun 环境下直接从源码完美运行。它包含了针对 Android/Termux 的 `node-pty`、`bun install` 以及 Solid JSX pragma 的兼容性补丁。
 
 ---
 
 ## 快速开始
 
-### 标准安装
+### Termux / Android (aarch64) 安装（首选）
+
+在 Termux 中直接运行以下一键安装命令：
+
+```bash
+# Termux (Android) 一键安装命令
+curl -fsSL https://raw.githubusercontent.com/LexGridnev/MiMo-Code/HEAD/termux/setup.sh | bash
+```
+
+该脚本将自动执行以下操作：
+1. 更新 Termux 软件包并安装必要的构建依赖（`git`、`python`、`clang`、`make`、`binutils`、`libandroid-spawn`、`ca-certificates`）。
+2. 安装 Bun（使用 Termux 的 `pkg` 或官方安装程序）。
+3. 克隆本仓库到您的设备，并以 copyfile 后端安装依赖。
+4. 从源码重新构建 `node-pty`，以确保与 Android Bionic libc 的原生终端兼容性。
+5. 在您的 Termux PATH（`$PREFIX/bin/mimo`）中安装全局 `mimo` 启动脚本。
+
+安装完成后，只需运行 `mimo` 即可启动助手。您可以随时通过以下命令升级您的安装：
+```bash
+mimo upgrade
+```
+
+首次启动自动引导配置。支持：
+- **MiMo Auto（限时免费）** — 匿名通道，零配置
+- **小米 MiMo 平台** — OAuth 登录
+- **从 Claude Code 导入** — 一键迁移已有认证
+- **自定义 Provider** — TUI 内添加任意 OpenAI 兼容 API
+
+### 标准安装（其他平台）
+
+如果您不是在 Android/Termux 环境下，可以安装官方上游版本：
 
 ```bash
 # 一键安装
@@ -33,30 +63,6 @@ curl -fsSL https://mimo.xiaomi.com/install | bash
 # 或通过 npm 安装
 npm install -g @mimo-ai/cli
 ```
-
-### Termux / Android (aarch64) 安装
-
-由于上游发布的二进制文件是基于 glibc 链接的，无法在 Android 的 Bionic libc 上原生运行，您可以使用 Termux 自动安装脚本在 Bun 环境下从源码运行 MiMoCode：
-
-```bash
-# Termux (Android) 一键安装命令
-curl -fsSL https://raw.githubusercontent.com/LexGridnev/MiMo-Code/HEAD/termux/setup.sh | bash
-```
-
-该脚本将自动执行以下操作：
-1. 更新 Termux 包并安装构建依赖（`git`、`python`、`clang`、`make`、`binutils`、`libandroid-spawn`、`ca-certificates`）。
-2. 安装 Bun（使用 Termux 的 `pkg` 或官方安装程序）。
-3. 克隆仓库并以 copyfile 后端安装 JS 依赖。
-4. 从源码重新构建 `node-pty`，以确保与 Android Bionic libc 的原生终端兼容性。
-5. 在您的 PATH 中安装全局 `mimo` 启动脚本。
-
-安装完成后，您可以通过运行 `mimo` 启动助手，并随时通过 `mimo upgrade` 进行升级。
-
-首次启动自动引导配置。支持：
-- **MiMo Auto（限时免费）** — 匿名通道，零配置
-- **小米 MiMo 平台** — OAuth 登录
-- **从 Claude Code 导入** — 一键迁移已有认证
-- **自定义 Provider** — TUI 内添加任意 OpenAI 兼容 API
 
 ---
 

@@ -1,10 +1,10 @@
-<h1 align="center">MiMoCode</h1>
+<h1 align="center">MiMoCode (Android & Termux Fork)</h1>
 
 <p align="center">
   <img src="assets/readme/mimocode-banner.png" alt="MiMoCode" width="700">
 </p>
 
-<p align="center"><strong>An open-source AI coding agent with cross-session memory.</strong></p>
+<p align="center"><strong>An open-source AI coding agent with cross-session memory, optimized for Android & Termux.</strong></p>
 
 <p align="center">
   <a href="README.zh.md">中文</a> | English
@@ -16,27 +16,18 @@
 
 ---
 
-MiMoCode is a terminal-native AI coding assistant. It can read and write code, run commands, manage Git, and use a persistent memory system to keep a deep understanding of your project across sessions while continuously improving itself.
+This is a specialized fork of **MiMoCode** (an open-source terminal-native AI coding assistant built on [OpenCode](https://github.com/anomalyco/opencode)) tailored specifically for running natively on **Android (aarch64)** inside **Termux**.
 
-MiMo Auto is built in as a free-for-limited-time channel, so you can start with zero configuration. MiMoCode also supports connecting to any mainstream LLM provider API.
+### Why this fork?
+Upstream release binaries are glibc-linked and cannot run natively on Android's Bionic libc. This fork addresses this by compiling, configuring, and optimizing MiMoCode to run flawlessly from source under Bun directly on your mobile device. It includes compatibility patches for `node-pty`, `bun install`, and Solid JSX pragmas on Android/Termux.
 
 ---
 
 ## Quick Start
 
-### Standard Installation
+### Termux / Android (aarch64) Installation (Primary)
 
-```bash
-# One-line install
-curl -fsSL https://mimo.xiaomi.com/install | bash
-
-# Or install via npm
-npm install -g @mimo-ai/cli
-```
-
-### Termux / Android (aarch64)
-
-Since upstream release binaries are glibc-linked and cannot run natively on Android's Bionic libc, you can run MiMoCode from source under Bun using the Termux auto-installer:
+Simply run the following one-line command inside Termux:
 
 ```bash
 # One-line install for Termux (Android)
@@ -46,17 +37,32 @@ curl -fsSL https://raw.githubusercontent.com/LexGridnev/MiMo-Code/HEAD/termux/se
 The installer script automatically:
 1. Updates system packages and installs build tools (`git`, `python`, `clang`, `make`, `binutils`, `libandroid-spawn`, `ca-certificates`).
 2. Installs Bun (via Termux packages or the official installer).
-3. Clones the repository and installs dependencies with copyfile backend.
-4. Rebuilds `node-pty` from source to ensure full compatibility with Android's Bionic libc.
-5. Installs a global `mimo` wrapper in your PATH.
+3. Clones this repository and installs dependencies with the copyfile backend.
+4. Rebuilds `node-pty` from source to ensure native terminal compatibility with Android's Bionic libc.
+5. Installs a global `mimo` wrapper in your PATH (`$PREFIX/bin/mimo`).
 
-Once installed, simply run `mimo` to start. You can update the installation later by running `mimo upgrade`.
+Once installed, simply run `mimo` to start the assistant. You can update the installation later by running:
+```bash
+mimo upgrade
+```
 
 The first launch guides you through configuration automatically. Supported options:
 - **MiMo Auto (free for a limited time)** — anonymous channel, zero configuration
 - **Xiaomi MiMo Platform** — OAuth login
 - **Import from Claude Code** — migrate existing authentication in one step
 - **Custom Provider** — add any OpenAI-compatible API in the TUI
+
+### Standard Installation (Other Platforms)
+
+If you are not on Android/Termux, you can install the upstream version:
+
+```bash
+# One-line install
+curl -fsSL https://mimo.xiaomi.com/install | bash
+
+# Or install via npm
+npm install -g @mimo-ai/cli
+```
 
 ---
 
