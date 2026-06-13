@@ -76,7 +76,7 @@ git remote get-url upstream >/dev/null 2>&1 || git remote add upstream "$UPSTREA
 # --- JS deps + node-pty (shared with 'mimo upgrade') ------------------------
 build_deps(){
   say "Installing JS dependencies..."
-  bun install --ignore-scripts
+  bun install --ignore-scripts --backend=copyfile
 
   export LDFLAGS="-landroid-spawn ${LDFLAGS:-}"
   local PTY_DIR
@@ -118,7 +118,7 @@ if [ "\${1:-}" = "upgrade" ]; then
   echo "==> Updating MiMo-Code..."
   git -C "\$REPO_DIR" pull --ff-only
   export LDFLAGS="-landroid-spawn \${LDFLAGS:-}"
-  ( cd "\$REPO_DIR" && bun install --ignore-scripts \
+  ( cd "\$REPO_DIR" && bun install --ignore-scripts --backend=copyfile \
     && bun run --cwd packages/opencode fix-node-pty >/dev/null 2>&1 || true )
   echo "==> Up to date."
   exit 0
