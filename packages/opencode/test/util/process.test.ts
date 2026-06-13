@@ -10,19 +10,22 @@ function node(script: string) {
 
 describe("util.process", () => {
   test("captures stdout and stderr", async () => {
-    const out = await Process.run(node('process.stdout.write("out");process.stderr.write("err")'))
+    await using tmp = await tmpdir()
+    const out = await Process.run(node('process.stdout.write("out");process.stderr.write("err")'), { cwd: tmp.path })
     expect(out.code).toBe(0)
     expect(out.stdout.toString()).toBe("out")
     expect(out.stderr.toString()).toBe("err")
   })
 
   test("returns code when nothrow is enabled", async () => {
-    const out = await Process.run(node("process.exit(7)"), { nothrow: true })
+    await using tmp = await tmpdir()
+    const out = await Process.run(node("process.exit(7)"), { nothrow: true, cwd: tmp.path })
     expect(out.code).toBe(7)
   })
 
   test("throws RunFailedError on non-zero exit", async () => {
-    const err = await Process.run(node('process.stderr.write("bad");process.exit(3)')).catch((error) => error)
+    await using tmp = await tmpdir()
+    const err = await Process.run(node('process.stderr.write("bad");process.exit(3)'), { cwd: tmp.path }).catch((error) => error)
     expect(err).toBeInstanceOf(Process.RunFailedError)
     if (!(err instanceof Process.RunFailedError)) throw err
     expect(err.code).toBe(3)
@@ -69,7 +72,9 @@ describe("util.process", () => {
   })
 
   test("merges environment overrides", async () => {
+    await using tmp = await tmpdir()
     const out = await Process.run(node('process.stdout.write(process.env.MIMOCODE_TEST ?? "")'), {
+      cwd: tmp.path,
       env: {
         MIMOCODE_TEST: "set",
       },

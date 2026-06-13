@@ -1,10 +1,21 @@
 // IMPORTANT: Set env vars BEFORE any imports from src/ directory
 // xdg-basedir reads env vars at import time, so we must set these first
+
+// Redefine process.execPath if it points to the glibc loader to fix tests in Termux
+if (process.execPath.includes("ld-linux") || process.execPath.includes("/lib/")) {
+  Object.defineProperty(process, "execPath", {
+    value: "/data/data/com.termux/files/home/.gemini/antigravity-cli/brain/e7af9450-e19e-40c5-976e-7e51d1399214/scratch/bun-loader-wrapper",
+    configurable: true,
+    writable: true,
+  })
+}
+
 import os from "os"
 import path from "path"
 import fs from "fs/promises"
 import { setTimeout as sleep } from "node:timers/promises"
 import { afterAll } from "bun:test"
+
 
 // Set XDG env vars FIRST, before any src/ imports
 const dir = path.join(os.tmpdir(), "mimocode-test-data-" + process.pid)
